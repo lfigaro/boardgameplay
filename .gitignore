@@ -15,3 +15,5 @@ batch
 node_modules
 coverage
 build
+
+.lock
