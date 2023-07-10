@@ -1,7 +1,6 @@
 const BoardGame = require('../models/boardgame-model');
 
 getBoardGameById =  async (req, res) => {
-    console.log('getBoardGameById: ')
     try{
         var data = await BoardGame.findById(req.params.bgId)
         console.log('Data: ', data)
@@ -13,7 +12,6 @@ getBoardGameById =  async (req, res) => {
 }
 
 getBoardGames =  async (req, res) => {
-    console.log('getBoardGames: ')
     try{
         var data;
 
@@ -33,7 +31,6 @@ getBoardGames =  async (req, res) => {
 }
 
 updateBoardGame =  async (req, res) => {
-    console.log('updateBoardGame: ')
     const data = new BoardGame({
         _id: 12345,
         name: req.params.name
