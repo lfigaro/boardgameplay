@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
-import ReactTable from "react-table-6";
 import api from '../api'
 
 import styled from 'styled-components'
-
-import "react-table-6/react-table.css" 
 
 const Wrapper = styled.div`
     padding: 0 40px 40px 40px;
@@ -65,16 +62,7 @@ class BoardGameList extends Component {
 
         return (
             <Wrapper>
-                {showTable && (
-                    <ReactTable
-                        data={boardgames}
-                        columns={columns}
-                        loading={isLoading}
-                        defaultPageSize={10}
-                        showPageSizeOptions={true}
-                        minRows={0}
-                    />
-                )}
+
             </Wrapper>
         )
     }
