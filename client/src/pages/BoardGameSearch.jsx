@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import api from '../api'
-
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
     padding: 0 40px 40px 40px;
-`
+    `
 
-class BoardGameList extends Component {
+class BoardGameSearch extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -19,10 +18,9 @@ class BoardGameList extends Component {
 
     componentDidMount = async () => {
         this.setState({ isLoading: true })
-
-        await api.getAllBoardGame().then(boardgames => {
+        await api.getBoardGameSearch().then(boardgames => {
             this.setState({
-                boardgames: boardgames.data.data,
+                boardgames: boardgames.data,
                 isLoading: false,
             })
         })
@@ -30,35 +28,7 @@ class BoardGameList extends Component {
 
     render() {
         const { boardgames, isLoading } = this.state
-        console.log('TCL: BoardGameList -> render -> boardgames', boardgames)
-
-        const columns = [
-            {
-                Header: 'ID',
-                accessor: '_id',
-                filterable: true,
-            },
-            {
-                Header: 'Name',
-                accessor: 'name',
-                filterable: true,
-            },
-            {
-                Header: 'Rating',
-                accessor: 'rating',
-                filterable: true,
-            },
-            {
-                Header: 'Time',
-                accessor: 'time',
-                Cell: props => <span>{props.value.join(' / ')}</span>,
-            },
-        ]
-
-        let showTable = true
-        if (!boardgames.length) {
-            showTable = false
-        }
+        console.log('TCL: BoardGameSearch -> render -> boardgames', boardgames)
 
         return (
             <Wrapper>
@@ -68,4 +38,4 @@ class BoardGameList extends Component {
     }
 }
 
-export default BoardGameList
+export default BoardGameSearch

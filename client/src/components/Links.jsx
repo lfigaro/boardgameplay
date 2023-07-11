@@ -28,11 +28,6 @@ class Links extends Component {
                                 Listar
                             </Link>
                         </Item>
-                        <Item>
-                            <Link to="/boardgame/search" className="nav-link">
-                                Buscar
-                            </Link>
-                        </Item>
                     </List>
                 </Collapse>
             </React.Fragment>

@@ -11,8 +11,8 @@ function App() {
         <Router>
             <NavBar />
             <Routes>
-                <Route path="/boardgame/list" exact element={<BoardGameList />} />
-                <Route path="/boardgame/search" exact element={BoardGameSearch} />
+                <Route path="/boardgame/list" exact element= {< BoardGameList />} />
+                <Route path="/boardgame/search" exact element= {< BoardGameSearch />} />
             </Routes>
         </Router>
     )

@@ -31,7 +31,7 @@ class BoardGameList extends Component {
         console.log('TCL: BoardGameList -> render -> boardgames', boardgames)
 
         return (
-            <div>
+            <Wrapper>
               {boardgames.map((boardgame, index) => {
                 return (
                     <div key={boardgame._id}>
@@ -41,7 +41,7 @@ class BoardGameList extends Component {
                     </div>
                 );
               })}
-            </div>
+            </Wrapper>
         );
     }
 }
