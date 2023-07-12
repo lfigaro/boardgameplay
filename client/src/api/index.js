@@ -6,7 +6,11 @@ const api = axios.create({
 
 export const getBoardGameList = () => api.get(`/boardgame/list`)
 export const getBoardGameById = id => api.get(`/boardgame/${id}`)
-export const getBoardGameSearch = () => api.get(`/boardgame/search`)
+export const getBoardGameSearch = searchTerm => api.get(`/boardgame/search` , {
+    params: {
+        searchTerm: searchTerm
+    }
+ });
 
 const apis = {
     getBoardGameList,

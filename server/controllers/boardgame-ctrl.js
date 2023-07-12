@@ -1,4 +1,5 @@
 const BoardGame = require('../models/boardgame-model');
+const escapeStringRegexp = require('escape-string-regexp');
 
 getBoardGameById =  async (req, res) => {
     try{
@@ -14,9 +15,17 @@ getBoardGameById =  async (req, res) => {
 getBoardGames =  async (req, res) => {
     try{
         var data;
-
         if(typeof req.params.bgId != 'undefined'){
             var data =  BoardGame.find(req.params.bgId);
+
+        }else if (typeof req.query.searchTerm != 'undefined'){
+
+            const $regex = escapeStringRegexp('+' + req.query.searchTerm);
+            var query = BoardGame.find({ 'name.#text': { $regex: req.query.searchTerm } });
+            query.limit(10);
+            query.then(await function (data) {
+                res.json(data)
+            });
         }else{
             var query = BoardGame.find();
             query.limit(10);

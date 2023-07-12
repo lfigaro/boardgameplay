@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 
 // retorna produto
 router.get('/list', BoardGameCtrl.getBoardGames)
-router.post('/search/:name', BoardGameCtrl.getBoardGames)
+router.get('/search', BoardGameCtrl.getBoardGames)
 router.post('/save/:name', BoardGameCtrl.updateBoardGame)
 router.get('/:bgId', BoardGameCtrl.getBoardGameById)
 
