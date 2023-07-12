@@ -27,7 +27,7 @@ class BoardGameList extends Component {
     }
 
     render() {
-        const { boardgames, isLoading } = this.state
+        const { boardgames } = this.state
         console.log('TCL: BoardGameList -> render -> boardgames', boardgames)
 
         return (
@@ -35,7 +35,7 @@ class BoardGameList extends Component {
               {boardgames.map((boardgame, index) => {
                 return (
                     <div key={boardgame._id}>
-                        <div ><img src={boardgame.thumbnail} /></div>
+                        <div ><img src={boardgame.thumbnail} alt={Array.isArray(boardgame.name) ? "XXXX" : boardgame.name['#text']} /></div>
                         <div dangerouslySetInnerHTML={{ __html: Array.isArray(boardgame.name) ? "XXXX" : boardgame.name['#text']}} />
                         <div dangerouslySetInnerHTML={{ __html: boardgame.description[0].text}} />
                     </div>
