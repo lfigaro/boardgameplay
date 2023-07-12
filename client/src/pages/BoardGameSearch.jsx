@@ -1,12 +1,6 @@
 import React, { Component } from 'react'
 import api from '../api'
-import styled from 'styled-components'
-import BoardgameListRow from '../components/boardgame/ListRow'
-
-const Wrapper = styled.div`
-    padding: 40px 200px 200px 200px;
-`
-
+import BoardgameList from '../components/boardgame/List'
 
 const queryParameters = new URLSearchParams(window.location.search)
 const searchTerm = queryParameters.get("searchTerm")
@@ -32,20 +26,10 @@ class BoardGameSearch extends Component {
     }
 
     render() {
-        const { boardgames } = this.state
-        console.log('TCL: BoardGameSearch -> render -> boardgames', boardgames)
-
+        const { boardgames } = this.state;
         return (
-            <Wrapper>
-                {boardgames.map((boardgame, index) => {
-                    return(
-                        <BoardgameListRow
-                            boardgame={boardgame}
-                            key={boardgame._id}
-                        />
-                    )
-                })}
-            </Wrapper>
+            <BoardgameList
+                boardgames={boardgames} />
         );
     }
 }
