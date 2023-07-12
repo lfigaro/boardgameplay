@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import api from '../api'
 import styled from 'styled-components'
+import BoardgameListRow from '../components/boardgame/ListRow'
 
 const Wrapper = styled.div`
-    padding: 0 40px 40px 40px;
-    `
+    padding: 40px 200px 200px 200px;
+`
+
 
 const queryParameters = new URLSearchParams(window.location.search)
 const searchTerm = queryParameters.get("searchTerm")
@@ -35,17 +37,16 @@ class BoardGameSearch extends Component {
 
         return (
             <Wrapper>
-              {boardgames.map((boardgame, index) => {
-                return (
-                    <div key={boardgame._id}>
-                        <div ><img src={boardgame.thumbnail} alt={Array.isArray(boardgame.name) ? "XXXX" : boardgame.name['#text']} /></div>
-                        <div dangerouslySetInnerHTML={{ __html: Array.isArray(boardgame.name) ? "XXXX" : boardgame.name['#text']}} />
-                        <div dangerouslySetInnerHTML={{ __html: boardgame.description[0].text}} />
-                    </div>
-                );
-              })}
+                {boardgames.map((boardgame, index) => {
+                    return(
+                        <BoardgameListRow
+                            boardgame={boardgame}
+                            key={boardgame._id}
+                        />
+                    )
+                })}
             </Wrapper>
-        )
+        );
     }
 }
 

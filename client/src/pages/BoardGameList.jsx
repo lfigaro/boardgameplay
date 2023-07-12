@@ -5,7 +5,7 @@ import BoardgameListRow from '../components/boardgame/ListRow'
 
 
 const Wrapper = styled.div`
-    padding: 0 40px 40px 40px;
+    padding: 40px 200px 200px 200px;
 `
 
 class BoardGameList extends Component {
@@ -37,6 +37,7 @@ class BoardGameList extends Component {
                     return(
                         <BoardgameListRow
                             boardgame={boardgame}
+                            key={boardgame._id}
                         />
                     )
                 })}
