@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import api from '../api'
 import styled from 'styled-components'
+import BoardGameRecord from '../components/boardgame/Ficha'
 
 const Wrapper = styled.div`
     padding: 40px 200px 200px 200px;
@@ -31,17 +32,12 @@ class BoardGameDetail extends Component {
 
     render() {
         const { boardgame } = this.state;
-        //console.log('boardgame: ', boardgame)
+
         if (boardgame != null){
-            const bgName = Array.isArray(boardgame.name) ? boardgame.name[0]['@value'] : boardgame.name['@value']
-            const bgDescription = boardgame.description[0].text    
             return (
                 <Wrapper>
-                    <div id={boardgame._id} >
-                        <div ><img src={boardgame.image} alt={bgName} width="450" /></div>
-                        <div dangerouslySetInnerHTML={{ __html: '<b>' + bgName + '</b>'}} />
-                        <div dangerouslySetInnerHTML={{ __html: bgDescription}} />
-                    </div>
+                    <BoardGameRecord 
+                        boardgame={boardgame}/>
                 </Wrapper>
             );
         } else {

@@ -1,30 +1,18 @@
-import BoardGameListRow from './ListRow';
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
     padding: 40px 200px 200px 200px;
 `
 
-export default function BoardGameList(props) {
+export default function BoardGameRecord(props) {
+    const bgName = Array.isArray(props.boardgame.name) ? props.boardgame.name[0]['@value'] : props.boardgame.name['@value']
+    const bgDescription = props.boardgame.description[0].text
 
-    //console.log('props.boardgames: ', props.boardgames)
     return (
-        <Wrapper>
-            {props.boardgames.map((boardgame, index) => {
-                var linkBg = '/boardgame?bgId=' + boardgame._id;
-                return(
-                    <a href={linkBg}
-                        className="nav-link"
-                        key={boardgame._id}>
-
-                        <BoardGameListRow
-                            boardgame={boardgame}
-                            key={boardgame._id}
-                        />
-
-                    </a>
-                )
-            })}
-        </Wrapper>
+        <div id={props.boardgame._id} >
+            <div ><img src={props.boardgame.image} alt={bgName} width="450" /></div>
+            <div dangerouslySetInnerHTML={{ __html: '<b>' + bgName + '</b>'}} />
+            <div dangerouslySetInnerHTML={{ __html: bgDescription}} />
+        </div>
     );
 }
