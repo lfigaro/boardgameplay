@@ -19,21 +19,21 @@ getBoardGames =  async (req, res) => {
         var data;
         if(typeof req.query.bgId != 'undefined'){
             //var data = await BoardGame.findById(''+ req.query.bgId)
-            var data = await BoardGame.findOne({ _id: req.query.bgId })
-            console.log('Data: ', data)
+            var data = await BoardGame.findById({ _id: req.query.bgId })
+            //console.log('Data: ', data)
             res.json(data)
 
         }else if (typeof req.query.searchTerm != 'undefined'){
             const $regex = escapeStringRegexp('+' + req.query.searchTerm);
             var query = BoardGame.find({ 'name.#text': { $regex: req.query.searchTerm } });
-            query.limit(10);
+            query.limit(100);
             query.then(await function (data) {
                 res.json(data)
             });
 
         }else{
             var query = BoardGame.find();
-            query.limit(10);
+            query.limit(100);
             query.then(await function (data) {
                 res.json(data)
             });

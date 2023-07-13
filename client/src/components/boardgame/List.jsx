@@ -1,4 +1,4 @@
-import { useLocation, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import BoardgameListRow from './ListRow';
 import styled from 'styled-components'
 
@@ -7,12 +7,14 @@ const Wrapper = styled.div`
 `
 
 export default function BoardgameList(props) {
+
+    //console.log('props.boardgames: ', props.boardgames)
     return (
         <Wrapper>
             {props.boardgames.map((boardgame, index) => {
-                const linkBg = '/boardgame?bgId=' + boardgame._id;
+                var linkBg = '/boardgame?bgId=' + boardgame._id;
                 return(
-                    <Link to={linkBg}
+                    <a href={linkBg}
                         className="nav-link"
                         key={boardgame._id}>
 
@@ -21,7 +23,7 @@ export default function BoardgameList(props) {
                             key={boardgame._id}
                         />
 
-                    </Link>
+                    </a>
                 )
             })}
         </Wrapper>
