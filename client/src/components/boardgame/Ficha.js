@@ -1,14 +1,11 @@
-import BoardgameListRow from './ListRow';
+import BoardGameListRow from './ListRow';
 import styled from 'styled-components'
-import InfiniteScroll from 'react-infinite-scroll-component';
 
 const Wrapper = styled.div`
     padding: 40px 200px 200px 200px;
 `
 
 export default function BoardGameList(props) {
-
-
 
     //console.log('props.boardgames: ', props.boardgames)
     return (
@@ -20,11 +17,11 @@ export default function BoardGameList(props) {
                         className="nav-link"
                         key={boardgame._id}>
 
-                        <BoardgameListRow
+                        <BoardGameListRow
                             boardgame={boardgame}
                             key={boardgame._id}
                         />
-                        <hr />
+
                     </a>
                 )
             })}

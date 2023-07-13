@@ -21,7 +21,7 @@ class BoardGameDetail extends Component {
 
     componentDidMount = async () => {
         await api.getBoardGameDetail(bgId).then(boardgame => {
-            console.log('bgId: ', bgId)
+            //console.log('bgId: ', bgId)
             this.setState({
                 boardgame: boardgame.data
             })
@@ -33,12 +33,12 @@ class BoardGameDetail extends Component {
         const { boardgame } = this.state;
         //console.log('boardgame: ', boardgame)
         if (boardgame != null){
-            const bgName = Array.isArray(boardgame.name) ? boardgame.name[0]['#text'] : boardgame.name['#text']
+            const bgName = Array.isArray(boardgame.name) ? boardgame.name[0]['@value'] : boardgame.name['@value']
             const bgDescription = boardgame.description[0].text    
             return (
                 <Wrapper>
                     <div id={boardgame._id} >
-                        <div ><img src={boardgame.image} alt={Array.isArray(boardgame.name) ? "XXXX" : boardgame.name['#text']} /></div>
+                        <div ><img src={boardgame.image} alt={bgName} width="450" /></div>
                         <div dangerouslySetInnerHTML={{ __html: '<b>' + bgName + '</b>'}} />
                         <div dangerouslySetInnerHTML={{ __html: bgDescription}} />
                     </div>
