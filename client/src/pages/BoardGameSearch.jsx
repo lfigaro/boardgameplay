@@ -9,18 +9,14 @@ class BoardGameSearch extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            boardgames: [],
-            columns: [],
-            isLoading: false,
+            boardgames: []
         }
     }
 
     componentDidMount = async () => {
-        this.setState({ isLoading: true })
         await api.getBoardGameSearch(searchTerm).then(boardgames => {
             this.setState({
-                boardgames: boardgames.data,
-                isLoading: false,
+                boardgames: boardgames.data
             })
         })
     }

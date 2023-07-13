@@ -18,6 +18,6 @@ router.get('/', (req, res) => {
 router.get('/list', BoardGameCtrl.getBoardGames)
 router.get('/search', BoardGameCtrl.getBoardGames)
 router.post('/save/:name', BoardGameCtrl.updateBoardGame)
-router.get('/:bgId', BoardGameCtrl.getBoardGameById)
+router.get('/:bgId', BoardGameCtrl.getBoardGames)
 
 module.exports = router

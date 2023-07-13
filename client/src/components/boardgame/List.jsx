@@ -1,3 +1,4 @@
+import { useLocation, Link } from "react-router-dom";
 import BoardgameListRow from './ListRow';
 import styled from 'styled-components'
 
@@ -9,11 +10,18 @@ export default function BoardgameList(props) {
     return (
         <Wrapper>
             {props.boardgames.map((boardgame, index) => {
+                const linkBg = '/boardgame?bgId=' + boardgame._id;
                 return(
-                    <BoardgameListRow
-                        boardgame={boardgame}
-                        key={boardgame._id}
-                    />
+                    <Link to={linkBg}
+                        className="nav-link"
+                        key={boardgame._id}>
+
+                        <BoardgameListRow
+                            boardgame={boardgame}
+                            key={boardgame._id}
+                        />
+
+                    </Link>
                 )
             })}
         </Wrapper>

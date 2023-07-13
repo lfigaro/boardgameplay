@@ -1,8 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes ,Route } from 'react-router-dom';
-
 import { NavBar } from '../components'
-import { BoardGameList, BoardGameSearch } from '../pages'
+import { BoardGameList, BoardGameSearch, BoardGameDetail } from '../pages'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -11,8 +10,10 @@ function App() {
         <Router>
             <NavBar />
             <Routes>
+                <Route path="/boardgame" exact element= {< BoardGameDetail />} />
                 <Route path="/boardgame/list" exact element= {< BoardGameList />} />
                 <Route path="/boardgame/search" exact element= {< BoardGameSearch />} />
+                
             </Routes>
         </Router>
     )

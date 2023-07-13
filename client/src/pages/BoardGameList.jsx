@@ -6,17 +6,14 @@ class BoardGameList extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            boardgames: [],
-            isLoading: false,
+            boardgames: []
         }
     }
 
     componentDidMount = async () => {
-        this.setState({ isLoading: true })
         await api.getBoardGameList().then(boardgames => {
             this.setState({
-                boardgames: boardgames.data,
-                isLoading: false,
+                boardgames: boardgames.data
             })
         })
     }

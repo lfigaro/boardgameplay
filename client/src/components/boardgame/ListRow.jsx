@@ -1,3 +1,8 @@
+function getBoardGame(e) {
+    e.preventDefault();
+    console.log('You clicked submit.');
+}
+
 export default function BoardgameListRow(props) {
     const bgName = Array.isArray(props.boardgame.name) ? "XXXX" : props.boardgame.name['#text']
     const bgDescription = props.boardgame.description[0].text
