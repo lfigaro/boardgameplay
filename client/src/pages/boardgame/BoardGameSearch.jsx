@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import api from '../api'
-import BoardgameList from '../components/boardgame/List'
+import api from '../../api'
+import BoardgameList from '../../components/boardgame/List'
 
 const queryParameters = new URLSearchParams(window.location.search)
 const searchTerm = queryParameters.get("searchTerm")

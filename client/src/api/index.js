@@ -18,6 +18,16 @@ export const getBoardGameSearch = searchTerm => api.get(`/boardgame/search`, {
     }
  });
 
+ export const saveUser = user => api.post(`/user/save`, {
+    params: {
+        email: user.email,
+        usuario: user.user,
+        nome: user.nome,
+        cidade: user.cidade,
+        senha: user.senha
+    }
+ });
+
 const apis = {
     getBoardGameList,
     getBoardGameDetail,

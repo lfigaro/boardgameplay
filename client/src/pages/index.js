@@ -1,5 +1,9 @@
-import BoardGameList from './BoardGameList'
-import BoardGameSearch from './BoardGameSearch'
-import BoardGameDetail from './BoardGameDetail'
+import BoardGameList from './boardgame/BoardGameList'
+import BoardGameSearch from './boardgame/BoardGameSearch'
+import BoardGameDetail from './boardgame/BoardGameDetail'
 
-export { BoardGameList, BoardGameSearch, BoardGameDetail }
+import UserSignIn from './user/UserSignIn'
+import UserSignUp from './user/UserSignUp'
+
+
+export { BoardGameList, BoardGameSearch, BoardGameDetail, UserSignIn, UserSignUp}

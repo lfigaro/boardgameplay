@@ -18,12 +18,9 @@ class Links extends Component {
     render() {
         return (
             <React.Fragment>
-                <Link to="/" className="navbar-brand">
-                    BoardGamePlay
-                </Link>
                 <Collapse>
                     <List>
-                        <Item>
+                        <Item className='nav-item'>
                             <Link to="/boardgame/list" className="nav-link">
                                 Listar
                             </Link>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import api from '../api'
-import BoardgameList from '../components/boardgame/List'
+import api from '../../api'
+import BoardgameList from '../../components/boardgame/List'
 
 class BoardGameList extends Component {
     constructor(props) {

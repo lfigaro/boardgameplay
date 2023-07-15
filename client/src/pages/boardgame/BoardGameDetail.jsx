@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import api from '../api'
+import api from '../../api'
 import styled from 'styled-components'
-import BoardGameRecord from '../components/boardgame/Ficha'
+import BoardGameRecord from '../../components/boardgame/Ficha'
 
 const Wrapper = styled.div`
     padding: 40px 200px 200px 200px;
@@ -22,11 +22,9 @@ class BoardGameDetail extends Component {
 
     componentDidMount = async () => {
         await api.getBoardGameDetail(bgId).then(boardgame => {
-            //console.log('bgId: ', bgId)
             this.setState({
                 boardgame: boardgame.data
             })
-            //console.log('boardgame: ', boardgame)
         })
     }
 
