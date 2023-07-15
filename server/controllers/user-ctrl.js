@@ -62,8 +62,11 @@ updateUser =  async (req, res) => {
 
 saveUser =  async (req, res) => {
     const data = new User({
-        _id: 12345,
-        name: req.params.name
+        email: req.body.params.email,
+        user: req.body.params.usuario,
+        name: req.body.params.nome,
+        city: req.body.params.cidade,
+        pass: req.body.params.senha
     })
 
     try {

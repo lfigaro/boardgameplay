@@ -31,7 +31,8 @@ export const getBoardGameSearch = searchTerm => api.get(`/boardgame/search`, {
 const apis = {
     getBoardGameList,
     getBoardGameDetail,
-    getBoardGameSearch
+    getBoardGameSearch,
+    saveUser
 }
 
 export default apis

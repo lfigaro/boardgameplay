@@ -2,8 +2,15 @@ import React, { Component } from 'react'
 import api from '../../api'
 
 class UserSignUp extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            user: ''
+        }
+    }
+
     render() {
-        let handleSubmit = async (e) => {
+        const handleSubmit = async (e) => {
             e.preventDefault();
             try {
                 var user = {}
@@ -14,6 +21,7 @@ class UserSignUp extends Component {
                 user.senha = e.target[4].value
 
                 await api.saveUser(user).then(userRes => {
+                    console.log('userRes: ', userRes)
                     this.setState({
                         user: userRes.data
                     })
@@ -22,6 +30,7 @@ class UserSignUp extends Component {
                 console.log(err);
             }
         };
+
 
         return (
             <div className="Auth-form-container">
