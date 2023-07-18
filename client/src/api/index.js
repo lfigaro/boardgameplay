@@ -28,11 +28,19 @@ export const getBoardGameSearch = searchTerm => api.get(`/boardgame/search`, {
     }
  });
 
+ export const checkUser = user => api.post(`/user/check`, {
+    params: {
+        usuario: user.user,
+        senha: user.senha
+    }
+ });
+
 const apis = {
     getBoardGameList,
     getBoardGameDetail,
     getBoardGameSearch,
-    saveUser
+    saveUser,
+    checkUser
 }
 
 export default apis

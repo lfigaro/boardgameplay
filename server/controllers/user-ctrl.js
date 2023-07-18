@@ -74,7 +74,21 @@ saveUser =  async (req, res) => {
         res.status(200).json(dataToSave)
     }
     catch (error) {
-        res.status(400).json({message: error.message})
+        res.status(500).json({message: error.message})
+    }
+}
+
+checkUser =  async (req, res) => {
+    try{
+        var data = await User.find( 
+            { $or: [ 
+                { email: req.body.params.usuario },
+                { user: req.body.params.usuario }
+            ] })
+        res.json(data)
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
     }
 }
 
@@ -82,5 +96,6 @@ module.exports = {
     saveUser,
     updateUser,
     getUsers,
-    getUserById
+    getUserById,
+    checkUser
 }

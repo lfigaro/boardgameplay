@@ -1,19 +1,58 @@
 import React, { Component } from 'react'
+import api from '../../api'
+import bcrypt from 'bcryptjs'
 
 
 class UserSignIn extends Component {
     constructor(props) {
         super(props)
-    }
-
-    componentDidMount = async () => {
+        this.state = {
+            user: '',
+            err: ''
+        }
     }
 
     render() {
+        const handleSubmit = async (e) => {
+            e.preventDefault();
+            try {
+                var user = {}
+                console.log('pass: ', bcrypt.hashSync(e.target[1].value, 10))
+                user.user = e.target[0].value
+
+                await api.checkUser(user)
+                .then(userRes => {
+                    console.log('userRes: ', userRes)
+                    if (bcrypt.compareSync(e.target[1].value, userRes.data[0].pass)) {
+                        this.setState({
+                            user: userRes.data,
+                            err: ''
+                        })    
+                    }else{
+                        this.setState({
+                            user: '',
+                            err: 'User not found'
+                        })
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    this.setState({
+                        user: '',
+                        err: error
+                    })
+                });
+            } catch (err) {
+                this.setState({
+                    user: '',
+                    err: err
+                })
+            }
+        };
 
         return (
             <div className="Auth-form-container">
-                <form className="Auth-form" >
+                <form className="Auth-form" method="post" onSubmit={handleSubmit}>
                     <div className="Auth-form-content">
                         <h3 className="Auth-form-title">Login</h3>
                         <div className="form-group mt-3">

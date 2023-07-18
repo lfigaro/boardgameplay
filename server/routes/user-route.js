@@ -16,5 +16,6 @@ router.get('/', (req, res) => {
 
 // retorna produto
 router.post('/save/', UserCtrl.saveUser)
+router.post('/check/', UserCtrl.checkUser)
 
 module.exports = router

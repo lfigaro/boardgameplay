@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import api from '../../api'
+import bcrypt from 'bcryptjs'
+
 
 class UserSignUp extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            user: ''
+            user: '',
+            err: ''
         }
     }
 
@@ -14,20 +17,30 @@ class UserSignUp extends Component {
             e.preventDefault();
             try {
                 var user = {}
+                
                 user.email = e.target[0].value
                 user.usuario = e.target[1].value
                 user.nome = e.target[2].value
                 user.cidade = e.target[3].value
-                user.senha = e.target[4].value
+                user.senha = bcrypt.hashSync(e.target[4].value, 10);
 
-                await api.saveUser(user).then(userRes => {
+                await api.saveUser(user)
+                .then(userRes => {
                     console.log('userRes: ', userRes)
                     this.setState({
-                        user: userRes.data
+                        user: userRes.data,
+                        err: ''
                     })
                 })
+                .catch(function (error) {
+                    console.log(error);
+                    this.setState({
+                        user: '',
+                        err: error
+                    })
+                });
             } catch (err) {
-                console.log(err);
+                console.log('err: ', err);
             }
         };
 
