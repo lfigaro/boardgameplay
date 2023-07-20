@@ -2,9 +2,9 @@ import BoardgameListRow from './ListRow';
 import styled from 'styled-components'
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-const Wrapper = styled.div`
-    padding: 40px 200px 200px 200px;
-`
+const Container = styled.div.attrs({
+    className: 'container',
+})``
 
 export default function BoardGameList(props) {
 
@@ -12,7 +12,7 @@ export default function BoardGameList(props) {
 
     //console.log('props.boardgames: ', props.boardgames)
     return (
-        <Wrapper>
+        <Container>
             {props.boardgames.map((boardgame, index) => {
                 var linkBg = '/boardgame?bgId=' + boardgame._id;
                 return(
@@ -28,6 +28,6 @@ export default function BoardGameList(props) {
                     </a>
                 )
             })}
-        </Wrapper>
+        </Container>
     );
 }
