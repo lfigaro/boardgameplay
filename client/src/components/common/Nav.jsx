@@ -6,13 +6,13 @@ import Search from './Search'
 
 const Container = styled.div.attrs({
     className: 'container',
-})``
-
-const NavBar = styled.nav.attrs({
-    className: 'nav',
 })`
-    margin-bottom: 20 px;
+    collapse navbar-collapse
 `
+
+const NavBar = styled.ul.attrs({
+    className: 'nav',
+})``
 
 class Nav extends Component {
     render() {

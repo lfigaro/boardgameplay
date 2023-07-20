@@ -9,7 +9,7 @@ class Logo extends Component {
     render() {
         return (
             <Wrapper href="/">
-                <img src="/img/icon.png" width="50" height="50" alt="BoardGamePlay" />
+                <img src="/img/icon.png" width="40" height="40" alt="BoardGamePlay" />
             </Wrapper>
         )
     }

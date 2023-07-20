@@ -2,31 +2,54 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-const Collapse = styled.div.attrs({
-    className: 'collpase navbar-collapse',
-})``
-
-const List = styled.div.attrs({
+const List = styled.ul.attrs({
     className: 'navbar-nav mr-auto',
 })``
 
-const Item = styled.div.attrs({
-    className: 'collpase navbar-collapse',
+const Item = styled.li.attrs({
+    className: 'nav-item',
 })``
+
+const DropDownItem = styled.li.attrs({
+    className: 'nav-item dropdown',
+})``
+
 
 class Links extends Component {
     render() {
         return (
             <React.Fragment>
-                <Collapse>
-                    <List>
-                        <Item className='nav-item'>
-                            <Link to="/boardgame/list" className="nav-link">
-                                Listar
-                            </Link>
-                        </Item>
-                    </List>
-                </Collapse>
+                <Item>
+                    <Link to="/boardgame/list" className="nav-link">
+                        Listar
+                    </Link>
+                </Item>
+                <DropDownItem>
+                    <Link to="#"
+                        className="nav-link dropdown-toggle"
+                        id="navbarDropdown"
+                        role="button"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false">
+                        Dropdown
+                    </Link>
+                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <Link to="#" className="dropdown-item">
+                            Teste 1
+                        </Link>
+                        <Link to="#" className="dropdown-item">
+                            Teste 2
+                        </Link>
+                        <Link to="#" className="dropdown-item">
+                            Teste 3
+                        </Link>
+                        <div className="dropdown-divider"></div>
+                        <Link to="#" className="dropdown-item">
+                            Teste 4
+                        </Link>
+                    </div>
+                </DropDownItem>
             </React.Fragment>
         )
     }

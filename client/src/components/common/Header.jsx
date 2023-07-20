@@ -10,13 +10,14 @@ const Container = styled.div.attrs({
 })``
 
 const Nav = styled.nav.attrs({
-    className: 'navbar navbar-expand-lg navbar-dark bg-dark',
+    className: 'navbar navbar-expand-lg navbar-light justify-content-between',
 })`
     margin-bottom: 20 px;
+    background-color: #e3f2fd;
 `
 
 const Collapse = styled.div.attrs({
-    className: 'collpase navbar-collapse',
+    className: 'collapse navbar-collapse',
 })``
 
 const List = styled.div.attrs({
@@ -24,7 +25,7 @@ const List = styled.div.attrs({
 })``
 
 const Item = styled.div.attrs({
-    className: 'collpase navbar-collapse',
+    className: 'collapse navbar-collapse',
 })``
 
 class Header extends Component {
