@@ -24,7 +24,7 @@ getBoardGames =  async (req, res) => {
             res.json(data)
 
         }else if (typeof req.query.searchTerm != 'undefined'){
-            const $regex = escapeStringRegexp('+' + req.query.searchTerm + '/i');
+            const $regex = escapeStringRegexp('+' + req.query.searchTerm + '$/i');
             var query = BoardGame.find({ 'name.@value': { $regex: req.query.searchTerm } });
             query.limit(100);
             query.then(await function (data) {

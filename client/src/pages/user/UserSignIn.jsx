@@ -21,27 +21,30 @@ class UserSignIn extends Component {
                 user.user = e.target[0].value
 
                 await api.checkUser(user)
-                .then(userRes => {
-                    console.log('userRes: ', userRes)
-                    if (bcrypt.compareSync(e.target[1].value, userRes.data[0].pass)) {
-                        this.setState({
-                            user: userRes.data,
-                            err: ''
-                        })    
-                    }else{
+                    .then(userRes => {
+                        console.log('userRes: ', userRes)
+                        if (bcrypt.compareSync(e.target[1].value, userRes.data[0].pass)) {
+                            this.setState({
+                                user: userRes.data[0],
+                                err: ''
+                            })
+                            // store the user in localStorage
+                            localStorage.setItem('user', userRes.data[0])
+
+                        } else {
+                            this.setState({
+                                user: '',
+                                err: 'User not found'
+                            })
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
                         this.setState({
                             user: '',
-                            err: 'User not found'
+                            err: error
                         })
-                    }
-                })
-                .catch(function (error) {
-                    console.log(error);
-                    this.setState({
-                        user: '',
-                        err: error
-                    })
-                });
+                    });
             } catch (err) {
                 this.setState({
                     user: '',

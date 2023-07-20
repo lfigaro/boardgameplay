@@ -5,51 +5,40 @@ import Logo from './Logo'
 import Login from './Login'
 import { Link } from 'react-router-dom'
 
-const Container = styled.div.attrs({
-    className: 'container',
-})``
-
 const Nav = styled.nav.attrs({
-    className: 'navbar navbar-expand-lg navbar-light justify-content-between',
+    className: 'navbar navbar-expand-sm navbar-light justify-content-between',
 })`
-    margin-bottom: 20 px;
     background-color: #e3f2fd;
 `
 
-const Collapse = styled.div.attrs({
-    className: 'collapse navbar-collapse',
+const List = styled.ul.attrs({
+    className: 'navbar-nav',
 })``
 
-const List = styled.div.attrs({
-    className: 'navbar-nav mr-auto',
-})``
-
-const Item = styled.div.attrs({
-    className: 'collapse navbar-collapse',
+const Item = styled.li.attrs({
+    className: 'navbar-expand-sm navbar-collapse',
 })``
 
 class Header extends Component {
     render() {
         return (
-            <Container>
-                <Nav>
-                    <Collapse>
-                        <List>
-                            <Item>
-                                <Logo />
-                            </Item>
-                            <Item>
-                                <Link to="/" className="navbar-brand">
-                                    BoardGamePlay
-                                </Link>
-                            </Item>
-                            <Item>
-                                <Login />
-                            </Item>
-                        </List>
-                    </Collapse>
-                </Nav>
-            </Container>
+            <Nav>
+                <List>
+                    <Item className='navbar-brand' >
+                        <Logo />
+                    </Item>
+                    <Item>
+                        <Link to="/" className="navbar-brand">
+                            BoardGamePlay
+                        </Link>
+                    </Item>
+                </List>
+                <List>
+                    <Item>
+                        <Login />
+                    </Item>
+                </List>
+            </Nav>
         )
     }
 }
