@@ -29,7 +29,7 @@ class UserSignIn extends Component {
                                 err: ''
                             })
                             // store the user in localStorage
-                            localStorage.setItem('user', userRes.data[0])
+                            localStorage.setItem('user', JSON.stringify(userRes.data[0]))
 
                         } else {
                             this.setState({
