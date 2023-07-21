@@ -7,8 +7,8 @@ class UserSignIn extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            user: '',
-            err: ''
+            user: null,
+            err: null
         }
     }
 
@@ -17,23 +17,21 @@ class UserSignIn extends Component {
             e.preventDefault();
             try {
                 var user = {}
-                console.log('pass: ', bcrypt.hashSync(e.target[1].value, 10))
                 user.user = e.target[0].value
-
                 await api.checkUser(user)
                     .then(userRes => {
-                        console.log('userRes: ', userRes)
                         if (bcrypt.compareSync(e.target[1].value, userRes.data[0].pass)) {
                             this.setState({
                                 user: userRes.data[0],
-                                err: ''
+                                err: null
                             })
                             // store the user in localStorage
                             localStorage.setItem('user', JSON.stringify(userRes.data[0]))
+                            window.location.href = "/"
 
                         } else {
                             this.setState({
-                                user: '',
+                                user: null,
                                 err: 'User not found'
                             })
                         }
@@ -41,13 +39,13 @@ class UserSignIn extends Component {
                     .catch(function (error) {
                         console.log(error);
                         this.setState({
-                            user: '',
+                            user: null,
                             err: error
                         })
                     });
             } catch (err) {
                 this.setState({
-                    user: '',
+                    user: null,
                     err: err
                 })
             }
@@ -55,13 +53,13 @@ class UserSignIn extends Component {
 
         return (
             <div className="Auth-form-container">
-                <form className="Auth-form" method="post" onSubmit={handleSubmit}>
+                <form className="Auth-form" action="/" method="post" onSubmit={handleSubmit}>
                     <div className="Auth-form-content">
                         <h3 className="Auth-form-title">Login</h3>
                         <div className="form-group mt-3">
                             <label>Email / Usuário</label>
                             <input
-                                type="email"
+                                type="text"
                                 className="form-control mt-1"
                                 placeholder="Digite seu email ou usuário"
                             />

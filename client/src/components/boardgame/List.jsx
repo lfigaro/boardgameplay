@@ -7,10 +7,6 @@ const Container = styled.div.attrs({
 })``
 
 export default function BoardGameList(props) {
-
-
-
-    //console.log('props.boardgames: ', props.boardgames)
     return (
         <Container>
             {props.boardgames.map((boardgame, index) => {

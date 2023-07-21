@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Header from '../components/common/Header';
 import Nav from '../components/common/Nav';
-import {BoardGameList, BoardGameSearch, BoardGameDetail} from '../pages/index.js';
+import {BoardGameList, BoardGameSearch, BoardGameDetail, Home} from '../pages/index.js';
 import {UserSignIn, UserSignUp} from '../pages/index.js';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -15,6 +15,9 @@ function App() {
             <Header />
             <Nav />
             <Routes>
+                {/* Home */}
+                <Route path="/" exact element={< Home />} />
+
                 {/* BoardGames */}
                 <Route path="/boardgame" >
                     <Route index exact element={< BoardGameDetail />} />
