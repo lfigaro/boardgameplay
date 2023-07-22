@@ -4,6 +4,11 @@ const Container = styled.div.attrs({
     className: 'container',
 })``
 
+const ImageDiv = styled.div.attrs({
+})`
+
+`
+
 
 export default function BoardGameRecord(props) {
     const bgName = Array.isArray(props.boardgame.name) ? props.boardgame.name[0]['@value'] : props.boardgame.name['@value']
@@ -11,7 +16,7 @@ export default function BoardGameRecord(props) {
 
     return (
         <Container id={props.boardgame._id} >
-            <div ><img src={props.boardgame.image} alt={bgName} width="450" /></div>
+            <ImageDiv><img src={props.boardgame.image} width="700" height="700" alt={bgName} /></ImageDiv>
             <div dangerouslySetInnerHTML={{ __html: '<b>' + bgName + '</b>'}} />
             <div dangerouslySetInnerHTML={{ __html: bgDescription}} />
         </Container>

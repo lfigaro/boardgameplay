@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 class Login extends Component {
@@ -27,6 +27,7 @@ class Login extends Component {
             const foundUser = JSON.parse(loggedInUser);
             ret = 
                 <React.Fragment>
+                    <Link to="/messages" className="nav-link"><img src="/img/message.png" width="30" height="30" alt="messages" /></Link>
                     <Link to="/user/profile" className="nav-link">{foundUser.name}</Link>
                     <Link to="/" className="nav-link"><span onClick={handleSubmit}>Logoff</span></Link>
                 </React.Fragment>

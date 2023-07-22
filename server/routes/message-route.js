@@ -1,5 +1,5 @@
 const express = require('express')
-const BoardGameCtrl = require('../controllers/boardgame-ctrl')
+const MessageCtrl = require('../controllers/message-ctrl')
 const router = express.Router()
 
 
@@ -11,12 +11,11 @@ router.use((req, res, next) => {
 
 // define the home page route
 router.get('/', (req, res) => {
-  res.send('BoardGame home page')
+  res.send('User home page')
 })
 
 // retorna produto
-router.get('/list', BoardGameCtrl.getBoardGames)
-router.get('/search', BoardGameCtrl.getBoardGames)
-router.get('/:bgId', BoardGameCtrl.getBoardGames)
+router.post('/send/', MessageCtrl.sendMessage)
+router.get('/get/', MessageCtrl.getMessages)
 
 module.exports = router

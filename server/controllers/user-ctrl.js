@@ -1,29 +1,22 @@
 const User = require('../models/user-model');
 const escapeStringRegexp = require('escape-string-regexp');
 
-getUserById =  async (req, res) => {
-    console.log('req.params.bgId: ', req.params.bgId);
-    try{
-        var data = await User.findById(req.params.bgId)
-        console.log('Data: ', data)
-        res.json(data)
-    }
-    catch(error){
-        res.status(500).json({message: error.message})
-    }
+getUserById = async (bgId) => {
+    var data = await User.findById(bgId)
+    return data
 }
 
-getUsers =  async (req, res) => {
+getUsers = async (req, res) => {
     console.log('req.query: ', req.query)
-    try{
+    try {
         var data;
-        if(typeof req.query.bgId != 'undefined'){
+        if (typeof req.query.bgId != 'undefined') {
             //var data = await User.findById(''+ req.query.bgId)
             var data = await User.findById({ _id: req.query.bgId })
             //console.log('Data: ', data)
             res.json(data)
 
-        }else if (typeof req.query.searchTerm != 'undefined'){
+        } else if (typeof req.query.searchTerm != 'undefined') {
             const $regex = escapeStringRegexp('+' + req.query.searchTerm + '/i');
             var query = User.find({ 'name.@value': { $regex: req.query.searchTerm } });
             query.limit(100);
@@ -31,7 +24,7 @@ getUsers =  async (req, res) => {
                 res.json(data)
             });
 
-        }else{
+        } else {
             var query = User.find();
             query.limit(100);
             query.then(await function (data) {
@@ -40,12 +33,12 @@ getUsers =  async (req, res) => {
 
         }
     }
-    catch(error){
-        res.status(500).json({message: error.message})
+    catch (error) {
+        res.status(500).json({ message: error.message })
     }
 }
 
-updateUser =  async (req, res) => {
+updateUser = async (req, res) => {
     const data = new User({
         _id: 12345,
         name: req.params.name
@@ -56,11 +49,11 @@ updateUser =  async (req, res) => {
         res.status(200).json(dataToSave)
     }
     catch (error) {
-        res.status(400).json({message: error.message})
+        res.status(400).json({ message: error.message })
     }
 }
 
-saveUser =  async (req, res) => {
+saveUser = async (req, res) => {
     const data = new User({
         email: req.body.params.email,
         user: req.body.params.user,
@@ -74,21 +67,23 @@ saveUser =  async (req, res) => {
         res.status(200).json(dataToSave)
     }
     catch (error) {
-        res.status(500).json({message: error.message})
+        res.status(500).json({ message: error.message })
     }
 }
 
-checkUser =  async (req, res) => {
-    try{
-        var data = await User.find( 
-            { $or: [ 
-                { email: req.body.params.usuario },
-                { user: req.body.params.usuario }
-            ] })
+checkUser = async (req, res) => {
+    try {
+        var data = await User.find(
+            {
+                $or: [
+                    { email: req.body.params.usuario },
+                    { user: req.body.params.usuario }
+                ]
+            })
         res.json(data)
     }
-    catch(error){
-        res.status(500).json({message: error.message})
+    catch (error) {
+        res.status(500).json({ message: error.message })
     }
 }
 

@@ -9,7 +9,6 @@ const Wrapper = styled.div`
 
 const queryParameters = new URLSearchParams(window.location.search)
 const bgId = queryParameters.get("bgId")
-console.log('window.location.search: ', window.location.search)
 
 class BoardGameDetail extends Component {
     constructor(props) {

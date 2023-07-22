@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-const List = styled.ul.attrs({
-    className: 'navbar-nav mr-auto',
-})``
-
 const Item = styled.li.attrs({
     className: 'nav-item',
 })``

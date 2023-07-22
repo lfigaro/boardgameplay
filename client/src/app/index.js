@@ -1,10 +1,13 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import {Home} from '../pages/index.js';
+import {BoardGameList, BoardGameSearch, BoardGameDetail} from '../pages/index.js';
+import {UserSignIn, UserSignUp} from '../pages/index.js';
+import {MessagesList, Messages} from '../pages/index.js';
+
 import Header from '../components/common/Header';
 import Nav from '../components/common/Nav';
-import {BoardGameList, BoardGameSearch, BoardGameDetail, Home} from '../pages/index.js';
-import {UserSignIn, UserSignUp} from '../pages/index.js';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../style/index.css'
@@ -30,6 +33,12 @@ function App() {
                     <Route index exact element={< UserSignIn />} />
                     <Route path="login" exact element={< UserSignIn />} />
                     <Route path="signup" exact element={< UserSignUp />} />
+                </Route>
+
+                {/* Message */}
+                <Route path="/messages" >
+                    <Route index exact element={< MessagesList />} />
+                    <Route path=":chatId" exact element={< Messages />} />
                 </Route>
             </Routes>
         </Router>

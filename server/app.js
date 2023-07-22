@@ -7,6 +7,7 @@ var mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
 var boardgame = require('./routes/boardgame-route')
 var user = require('./routes/user-route')
+var message = require('./routes/message-route')
 var app = express();
 const cors = require('cors')
 
@@ -34,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/boardgame', boardgame)
 app.use('/user', user)
+app.use('/message', message)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
