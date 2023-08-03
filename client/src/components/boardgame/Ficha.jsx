@@ -16,6 +16,7 @@ export default function BoardGameRecord(props) {
 
     return (
         <Container id={props.boardgame._id} >
+            
             <ImageDiv><img src={props.boardgame.image} width="700" height="700" alt={bgName} /></ImageDiv>
             <div dangerouslySetInnerHTML={{ __html: '<b>' + bgName + '</b>'}} />
             <div dangerouslySetInnerHTML={{ __html: bgDescription}} />

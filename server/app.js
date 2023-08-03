@@ -5,9 +5,13 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
+
 var boardgame = require('./routes/boardgame-route')
 var user = require('./routes/user-route')
 var message = require('./routes/message-route')
+var collection = require('./routes/collection-route')
+var match = require('./routes/match-route')
+
 var app = express();
 const cors = require('cors')
 
@@ -36,6 +40,8 @@ app.use('/', indexRouter);
 app.use('/boardgame', boardgame)
 app.use('/user', user)
 app.use('/message', message)
+app.use('/collection', collection)
+app.use('/match', match)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
